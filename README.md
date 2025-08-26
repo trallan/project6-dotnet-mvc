@@ -18,8 +18,8 @@ This app demonstrates Models, Views, Controllers, routing, and validation.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/trallan/project6-dotnet-mvc
+cd project6-dotnet-mvc
 ```
 
 ### 2. Restore dependencies
