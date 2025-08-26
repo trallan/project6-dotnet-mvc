@@ -45,9 +45,9 @@ public class HomeController : Controller
     {
         var books = new List<Book>
         {
-            new Book { Id = 1, Title = "Clean Code", Author = "Robert C. Martin", Year = 2008, ImageUrl = "https://m.media-amazon.com/images/I/61lyq+ls0rL._UF1000,1000_QL80_.jpg" },
-            new Book { Id = 2, Title = "The Pragmatic Programmer", Author = "Andrew Hunt", Year = 1999, ImageUrl = "https://m.media-amazon.com/images/I/71f1jieYHNL._UF1000,1000_QL80_.jpg" },
-            new Book { Id = 3, Title = "Design Patterns", Author = "Erich Gamma", Year = 1994, ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREfFVrtSx-WOHW16Svk2s4L0Y25XwDfarA_Q&s" }
+            new Book { Id = 1, Title = "Clean Code", Author = "Robert C. Martin", Year = 2008, ImageUrl = "" },
+            new Book { Id = 2, Title = "The Pragmatic Programmer", Author = "Andrew Hunt", Year = 1999, ImageUrl = "" },
+            new Book { Id = 3, Title = "Design Patterns", Author = "Erich Gamma", Year = 1994, ImageUrl = "" }
         };
 
         ViewBag.SelectedId = id;
@@ -60,3 +60,4 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
+
