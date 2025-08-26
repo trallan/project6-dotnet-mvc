@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Book Page";
+}
+
+<h2>Book List</h2>
+<ul>
+@foreach (var book in Model)
+{
+    <a href="book?id=@book.Id"><li>@book.Title by @book.Author (@book.Year)</li></a>
+}
+</ul>

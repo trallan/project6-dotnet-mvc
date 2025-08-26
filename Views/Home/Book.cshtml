@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Book Page";
+}
+
+<h2>Selected Book ID: @ViewBag.SelectedId</h2>
+
+<ul>
+@foreach (var book in Model)
+{
+    @if(@ViewBag.SelectedId == book.Id)
+    {
+        <li>@book.Title</li>
+        <li>@book.Author</li>
+        <li>@book.Year</li>
+        <image src="@book.ImageUrl" alt="Book Image Missing" width="300" height="400"/>
+    }
+}
+</ul>
+
+<a href="books">Go Back</a>
