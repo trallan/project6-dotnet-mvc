@@ -1,0 +1,36 @@
+# Visual Studio / Rider / IDE files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+bin/
+obj/
+
+# NuGet packages (optional if you restore on build)
+*.nupkg
+packages/
+# If using PackageReference, packages folder may not exist
+
+# Logs
+*.log
+
+# OS generated files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Publish folder
+publish/
+
+# ASP.NET temporary files
+App_Data/*.mdf
+App_Data/*.ldf
+
+# JetBrains Rider
+.idea/
+
+# Node modules (if using front-end npm/yarn)
+node_modules/
