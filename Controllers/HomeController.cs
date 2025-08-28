@@ -1,6 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using project6_dotnet_mvc.Models;
+using Application.Models;
+using Application.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace project6_dotnet_mvc.Controllers;
 
@@ -19,15 +22,43 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Books()
+    public IActionResult Books(int id)
     {
-        var books = new List<Book>
-        {
-            new Book { Id = 1, Title = "Clean Code", Author = "Robert C. Martin", Year = 2008 },
-            new Book { Id = 2, Title = "The Pragmatic Programmer", Author = "Andrew Hunt", Year = 1999 },
-            new Book { Id = 3, Title = "Design Patterns", Author = "Erich Gamma", Year = 1994 }
-        };
+        // var books = new List<Book>
+        // {
+        //     new Book { Id = 1, Title = "Clean Code", Author = "Robert C. Martin", Year = 2008 },
+        //     new Book { Id = 2, Title = "The Pragmatic Programmer", Author = "Andrew Hunt", Year = 1999 },
+        //     new Book { Id = 3, Title = "Design Patterns", Author = "Erich Gamma", Year = 1994 }
+        // };
 
+        using var context = new ApplicationDbContext();
+
+        // Get all books ordered by title
+        var books = context.MyBooks
+                            .Include(b => b.Author)
+                            .OrderBy(b => b.Title)
+                            .ToList(); // or use ToListAsync() if async
+
+        ViewBag.SelectedId = id;
+        return View(books);
+    }
+
+    public IActionResult Book(int id)
+    {
+        // var books = new List<Book>
+        // {
+        //     new Book { Id = 1, Title = "Clean Code", Author = "Robert C. Martin", Year = 2008, ImageUrl = "" },
+        //     new Book { Id = 2, Title = "The Pragmatic Programmer", Author = "Andrew Hunt", Year = 1999, ImageUrl = "" },
+        //     new Book { Id = 3, Title = "Design Patterns", Author = "Erich Gamma", Year = 1994, ImageUrl = "" }
+        // };
+        // Get all books ordered by title
+        using var context = new ApplicationDbContext();
+        var books = context.MyBooks
+                            .Include(b => b.Author)
+                            .OrderBy(b => b.Title)
+                            .ToList(); // or use ToListAsync() if async
+
+        ViewBag.SelectedId = id;
         return View(books);
     }
 
@@ -39,19 +70,6 @@ public class HomeController : Controller
     public IActionResult About()
     {
         return View();
-    }
-
-    public IActionResult Book(int id)
-    {
-        var books = new List<Book>
-        {
-            new Book { Id = 1, Title = "Clean Code", Author = "Robert C. Martin", Year = 2008, ImageUrl = "" },
-            new Book { Id = 2, Title = "The Pragmatic Programmer", Author = "Andrew Hunt", Year = 1999, ImageUrl = "" },
-            new Book { Id = 3, Title = "Design Patterns", Author = "Erich Gamma", Year = 1994, ImageUrl = "" }
-        };
-
-        ViewBag.SelectedId = id;
-        return View(books);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

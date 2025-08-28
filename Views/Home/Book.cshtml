@@ -10,9 +10,9 @@
     @if(@ViewBag.SelectedId == book.Id)
     {
         <li>@book.Title</li>
-        <li>@book.Author</li>
+        <li>@book.Author?.Name</li>
         <li>@book.Year</li>
-        <image src="@book.ImageUrl" alt="Book Image Missing" width="300" height="400"/>
+        <image src="@book.ImageUrl" alt="Image not found" width="300" height="400"/>
     }
 }
 </ul>
